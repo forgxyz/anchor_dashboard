@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+    - name: terra_sv
+      database: flipside
+      schema: terra_sv
+      tables:
+        - name: blocks
+        - name: labels
+        - name: msgs
+        - name: msg_events
+        - name: transactions
+        - name: transitions
+    - name: terra
+      database: flipside
+      schema: terra
+      tables:
+        - name: transfers
+        - name: swaps
+        - name: daily_balances
+        - name: oracle_prices
