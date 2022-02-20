@@ -1,0 +1,19 @@
+
+version: 2
+
+models:
+  - name: int_anchor_borrow_collateral_deposits
+    description: |-
+      This table
+
+    columns:
+      - name: block_timestamp
+        description: The transaction timestamp from the block.
+        tests:
+          - not_null
+
+      - name: tx_id
+        description: The transaction id.
+        tests:
+          - unique
+          - not_null
