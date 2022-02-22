@@ -1,7 +1,8 @@
 {{
   config(
     materialized='incremental',
-    cluster_by='block_hour'
+    cluster_by='block_timestamp',
+    tags=['price', 'aust']
   )
 }}
 
@@ -17,7 +18,7 @@ aust_price as (
 
   select
 
-    date_trunc('hour', block_timestamp) as block_hour,
+    date_trunc('hour', block_timestamp) as block_timestamp,
     avg(aust_price) as aust_price
 
   from redemptions
