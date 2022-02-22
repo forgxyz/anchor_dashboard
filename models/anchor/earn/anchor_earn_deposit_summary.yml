@@ -1,0 +1,73 @@
+
+version: 2
+
+models:
+  - name: anchor_earn_deposit_summary
+    description: |-
+      This table provides summary statistics for on chain Anchor Earn deposits.
+
+    columns:
+      - name: date
+        description: The date of the activity
+        tests:
+          - not_null
+
+      - name: gross_deposit_amount
+        description: Aggregated deposit amount for the `date`.
+        tests:
+          - not_null
+
+      - name: avg_deposit
+        description: Average deposit size on `date`.
+        tests:
+          - not_null
+
+      - name: min_deposit
+        description: Minimum deposit amount on `date`.
+        tests:
+          - not_null
+
+      - name: max_deposit
+        description: Maximum deposit amount on `date`.
+        tests:
+          - not_null
+
+      - name: median_deposit
+        description: Median deposit size on `date`.
+        tests:
+          - not_null
+
+      - name: deposit_tx_count
+        description: Count of deposit type transactions on `date`.
+        tests:
+          - not_null
+
+      - name: cumulative_gross_deposit_amount
+        description: Cumulative sum of `gross_deposit_amount` up to the `date`.
+        tests:
+          - not_null
+
+      - name: avg_deposit_ma
+        description: Weekly moving average of `avg_deposit`.
+        tests:
+          - not_null
+
+      - name: max_deposit_ma
+        description: Weekly moving average of `max_deposit`.
+        tests:
+          - not_null
+
+      - name: min_deposit_ma
+        description: Weekly moving average of `min_deposit`.
+        tests:
+          - not_null
+
+      - name: median_deposit_ma
+        description: Weekly moving average of `median_deposit`.
+        tests:
+          - not_null
+
+      - name: deposit_tx_count_ma
+        description: Weekly moving average of `deposit_tx_count`.
+        tests:
+          - not_null
