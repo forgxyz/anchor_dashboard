@@ -9,7 +9,7 @@
 
 with deposits as (
 
-    select * from {{ ref('stg_anchor_earn_deposits') }}
+    select * from {{ ref('stg_anchor_earn_deposit_msg_events') }}
     where {{ incremental_load_filter('block_timestamp') }}
 
 ),
@@ -21,8 +21,9 @@ final as (
         block_timestamp,
         tx_id,
         chain_id,
-        msg_value:coins[0]:amount::float / pow(10,6) as amount,
-        msg_value:sender::string as user_address
+        event_attributes:depositor::string as depositor,
+        event_attributes:deposit_amount::float / pow(10,6) as deposit_amount,
+        event_attributes:mint_amount::float / pow(10,6) as mint_amount
 
     from deposits
 

@@ -1,7 +1,7 @@
 {{
   config(
     materialized='incremental',
-    cluster_by='block_timestamp'
+    cluster_by='block_hour'
   )
 }}
 
