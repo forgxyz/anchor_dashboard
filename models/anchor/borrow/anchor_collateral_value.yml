@@ -1,0 +1,28 @@
+
+version: 2
+
+models:
+  - name: anchor_collateral_value
+    description: |-
+      This table calculates the total USD value of Anchor Collateral.
+
+    columns:
+      - name: date
+        description: The date from the block.
+        tests:
+          - not_null
+
+      - name: bluna_value
+        description: The value, in USD, of bLUNA on `date`.
+        tests:
+          - not_null
+
+      - name: beth_value
+        description: The value, in USD, of bETH on `date`.
+        tests:
+          - not_null
+
+      - name: total_value
+        description: The value, in USD, of all collateral on `date`.
+        tests:
+          - not_null

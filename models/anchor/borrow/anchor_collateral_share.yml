@@ -1,0 +1,23 @@
+
+version: 2
+
+models:
+  - name: anchor_collateral_share
+    description: |-
+      This table presents collateral (by value) as a percent of the total share of collateral, daily.
+
+    columns:
+      - name: date
+        description: The date from the block.
+        tests:
+          - not_null
+
+      - name: pct
+        description: The percent share of `collateral`.
+        tests:
+          - not_null
+
+      - name: collateral
+        description: The collateral token.
+        tests:
+          - not_null

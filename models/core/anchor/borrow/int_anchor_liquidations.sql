@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='view',
+        materialized='table',
         tags=['anchor', 'borrow', 'collateral', 'liquidate'],
         unique_key='tx_id'
     )

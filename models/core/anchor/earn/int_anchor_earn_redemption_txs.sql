@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='view',
+        materialized='table',
         tags=['anchor', 'earn', 'redemption', 'users']
     )
 }}
