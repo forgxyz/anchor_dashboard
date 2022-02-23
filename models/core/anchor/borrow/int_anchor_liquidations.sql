@@ -24,14 +24,14 @@ final as (
 
         case
             when event_attributes:"0_collateral_amount" is not null then event_attributes:"0_collateral_amount"::float / pow(10,6)
-            else event_attributes:collateral_amount::float / pow(10,6) 
+            else event_attributes:collateral_amount::float / pow(10,6)
         end as liquidated_amount,
 
         event_attributes:"0_repay_amount"::float /pow(10,6) as loan_repay_amount,
 
         case
             when event_attributes:liquidator is not null then event_attributes:liquidator::string
-            else event_attributes:"0_liquidator"::string 
+            else event_attributes:"0_liquidator"::string
         end as liquidator
 
     from liquidations

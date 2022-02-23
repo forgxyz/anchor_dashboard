@@ -1,0 +1,38 @@
+
+version: 2
+
+models:
+  - name: anchor_aust_supply
+    description: |-
+      This table calculates the outstanding supply of aUST by on chain events (mint & burn) as an estimate for the balance of Anchor Earn.
+
+    columns:
+      - name: date
+        description: The date of the balance.
+        tests:
+          - not_null
+
+      - name: net_change
+        description: Daily change in aUST as calculated by daily_mint_amount - daily_burn_amount.
+        tests:
+          - not_null
+
+      - name: daily_price_aust
+        description: The price of aUST on the given `date`.
+        tests:
+          - not_null
+
+      - name: net_earn
+        description: The net daily change in Anchor Earn based on aUST movement that day * the price of aUST.
+        tests:
+          - not_null
+
+      - name: circulating_aust
+        description: Cumulative sum of aUST minted/burned on a daily basis, as a calculation of the circulating supply of aUST.
+        tests:
+          - not_null
+
+      - name: earn_balance
+        description: The balance of Anchor Earn, based on outstanding aUST.
+        tests:
+          - not_null

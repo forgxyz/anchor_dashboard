@@ -1,0 +1,44 @@
+
+version: 2
+
+models:
+  - name: int_anchor_borrow_collateral_deposits
+    description: |-
+      This table parses the JSON events from int_anchor_borrow_collateral_deposits into queryable values.
+
+    columns:
+      - name: block_timestamp
+        description: The transaction timestamp from the block.
+        tests:
+          - not_null
+
+      - name: chain_id
+        description: The chain on which the transaction was settled.
+        tests:
+          - not_null
+
+      - name: tx_id
+        description: The transaction id.
+        tests:
+          - unique
+          - not_null
+
+      - name: amount
+        description: The decimal-adjusted amount of collateral deposited, in token count.
+        tests:
+          - not_null
+
+      - name: sender
+        description: Address that deposited collateral into the contract.
+        tests:
+          - not_null
+
+      - name: collateral
+        description: The contract address for the collateral deposited.
+        tests:
+          - not_null
+
+      - name: action
+        description: The action taken by the sender.
+        tests:
+          - not_null

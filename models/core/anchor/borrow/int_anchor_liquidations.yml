@@ -1,0 +1,49 @@
+
+version: 2
+
+models:
+  - name: int_anchor_liquidations
+    description: |-
+      This table holds parsed json data from Anchor liquidation transactions
+
+    columns:
+      - name: block_timestamp
+        description: The transaction timestamp from the block.
+        tests:
+          - not_null
+
+      - name: tx_id
+        description: The transaction id.
+        tests:
+          - unique
+          - not_null
+
+      - name: chain_id
+        description: The chain on which the transaction was settled.
+        tests:
+          - not_null
+
+      - name: borrower
+        description: Address of the borrower being liquidated in the transaction.
+        tests:
+          - not_null
+
+      - name: collateral_contract
+        description: The contract address for the collateral being liquidated.
+        tests:
+          - not_null
+
+      - name: liquidated_amount
+        description: The decimal-adjusted amount of collateral deposited, in token count.
+        tests:
+          - not_null
+
+      - name: loan_repay_amount
+        description: The decimal-adjusted amount of the loan being repaid.
+        tests:
+          - not_null
+
+      - name: liquidator
+        description: The address of the liquidator.
+        tests:
+          - not_null
