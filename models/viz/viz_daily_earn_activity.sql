@@ -21,7 +21,8 @@ activity as (
     net_depositor_activity
 
   from net_deposits
-
+  order by 1
+  
 )
 
 select * from activity

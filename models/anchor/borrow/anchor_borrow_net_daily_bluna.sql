@@ -1,7 +1,7 @@
 {{
     config(
         materialized='table',
-        tags=['anchor','collateral','bluna']
+        tags=['anchor','collateral','bluna','hardcoded']
     )
 }}
 
@@ -29,15 +29,15 @@ net_daily_action as (
         case
             when action = 'withdraw' then amount
         end as withdraw_amount
-    
+
     from bluna_actions
 
 ),
 
 action_agg as (
 
-    select 
-        
+    select
+
         date,
         sum(deposit_amount) as gross_deposit,
         sum(withdraw_amount) as gross_withdraw
@@ -66,7 +66,7 @@ add_liquidations as (
         actions.gross_withdraw,
         actions.net_borrower_action,
         coalesce(liquidations.gross_liquidated,0) as gross_bluna_liquidated
-        
+
 
     from actions
     left join liquidations using (date)
@@ -90,7 +90,7 @@ final as (
 
         *,
         sum(daily_change) over (order by date) as cumulative_bluna
-    
+
     from final_daily_change
 
 )
