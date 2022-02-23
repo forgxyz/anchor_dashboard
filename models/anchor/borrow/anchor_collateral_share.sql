@@ -1,7 +1,7 @@
 {{
   config(
     materialized='table',
-    tags=['collateral','bluna','beth']
+    tags=['collateral','bluna','beth','hardcoded']
   )
 }}
 
