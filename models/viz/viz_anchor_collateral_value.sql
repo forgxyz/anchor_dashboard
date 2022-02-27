@@ -6,10 +6,10 @@
 }}
 
 with
-collateral as (
+data as (
 
   select * from {{ ref('anchor_collateral_value') }}
   order by 1
 )
 
-select * from collateral
+select * from data
