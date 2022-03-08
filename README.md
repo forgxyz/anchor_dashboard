@@ -1,5 +1,5 @@
 # anchor_dashboard
-dbt data models for Anchor Protocol's financial health dashboard.  
+dbt data models for Anchor Protocol's financial health [dashboard](https://forgash.retool.com/embedded/public/e54597fe-837b-4a13-8dbc-332c8226f6f4).  
 
 
 ## structure
