@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='table',
+        materialized='incremental',
         tags=['core', 'anchor', 'yield reserve'],
         cluster_by=['date']
     )
