@@ -1,28 +1,16 @@
 {{
   config(
-    materialized='table',
+    materialized='view',
     tags=['earn','deposit','redemption','viz']
   )
 }}
 
 with
-net_deposits as (
+data as (
 
-  select * from {{ ref('anchor_earn_net_daily_deposits') }}
-
-),
-
-activity as (
-
-  select
-    date,
-    daily_gross_deposit,
-    -daily_gross_redemption as daily_gross_redemption,
-    net_depositor_activity
-
-  from net_deposits
+  select * from {{ ref('anchor_daily_earn_activity') }}
   order by 1
   
 )
 
-select * from activity
+select * from data

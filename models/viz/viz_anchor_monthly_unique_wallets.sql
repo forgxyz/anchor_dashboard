@@ -1,27 +1,16 @@
 {{
   config(
-    materialized='table',
-    tags=['anchor','users']
+    materialized='view',
+    tags=['anchor','monthly','users']
   )
 }}
 
-with msgs as (
+with
+data as (
 
-  select * from {{ ref('stg_anchor_interactions') }}
-
-),
-
-unique_wallets as (
-
-  select
-
-    date_trunc('month', block_timestamp) as date,
-    count(distinct msg_value:sender::string) as unique_addresses
-
-  from msgs
-  group by 1
+  select * from {{ ref('anchor_monthly_unique_wallets') }}
   order by 1
 
 )
 
-select * from unique_wallets
+select * from data

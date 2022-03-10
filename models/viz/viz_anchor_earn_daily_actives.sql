@@ -1,14 +1,14 @@
 {{
   config(
     materialized='view',
-    tags=['collateral','bluna','beth','viz']
+    tags=['earn','users']
   )
 }}
 
 with
 data as (
 
-  select * from {{ ref('anchor_collateral_value') }}
+  select * from {{ ref('anchor_earn_daily_users') }}
   order by 1
 
 )

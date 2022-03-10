@@ -1,6 +1,9 @@
 {{
   config(
-    materialized='table'
+    materialized='table',
+    tags=['borrow','users'],
+    unique_key='tx_id'
+
   )
 }}
 
@@ -15,6 +18,7 @@ borrow_side as (
 
   select
 
+    tx_id,
     block_timestamp,
     msg_value:sender::string as sender
 
@@ -29,20 +33,24 @@ borrow_side as (
 
 ),
 
+-- exclude things like swaps
 filtered_collateral as (
 
   select
 
+    tx_id,
     block_timestamp,
     msg_value:sender::string as sender
 
   from txs
   where msg_value:contract in (
     'terra1dzhzukyezv0etz22ud940z7adyv7xgcjkahuun', -- bETH
-    'terra1kc87mu460fwkqte29rquh4hc20m54fxwtsx7gp' -- bLUBA
+    'terra1kc87mu460fwkqte29rquh4hc20m54fxwtsx7gp' -- bLUNA
     )
     and (
+      -- col4
       msg_value:execute_msg:send:msg like '%deposit_collateral%'
+      -- col5
       or msg_value:execute_msg:send:msg like '%eyJkZXBvc2l0X2NvbGxhdGVyYWwiOnt9fQ=='
     )
 
@@ -54,19 +62,6 @@ combo as (
   union
   select * from filtered_collateral
 
-),
-
-unique_wallets as (
-
-  select
-
-    date_trunc('d', block_timestamp) as date,
-    count(distinct sender) as unique_borrow_wallet
-
-  from combo
-  group by 1
-  order by 1
-
 )
 
-select * from unique_wallets
+select * from combo
