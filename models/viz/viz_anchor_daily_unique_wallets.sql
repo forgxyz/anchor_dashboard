@@ -1,27 +1,16 @@
 {{
   config(
-    materialized='table',
-    tags=['anchor','users']
+    materialized='view',
+    tags=['anchor','daily','users']
   )
 }}
 
-with msgs as (
+with
+data as (
 
-  select * from {{ ref('stg_anchor_interactions') }}
-
-),
-
-unique_wallets as (
-
-  select
-
-    date_trunc('day', block_timestamp) as date,
-    count(distinct msg_value:sender::string) as unique_addresses
-
-  from msgs
-  group by 1
+  select * from {{ ref('anchor_daily_unique_wallets') }}
   order by 1
 
 )
 
-select * from unique_wallets
+select * from data

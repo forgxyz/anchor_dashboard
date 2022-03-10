@@ -1,14 +1,14 @@
 {{
   config(
     materialized='view',
-    tags=['anchor','yield']
+    tags=['borrow','users']
   )
 }}
 
 with
 data as (
 
-  select * from {{ ref('stg_balance_anchor_yield_reserve') }}
+  select * from {{ ref('anchor_borrow_daily_users') }}
   order by 1
 
 )
