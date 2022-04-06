@@ -1,7 +1,7 @@
 {{
     config(
         materialized='incremental',
-        tags=['core', 'anchor', 'earn', 'depsoit'],
+        tags=['core', 'anchor', 'earn', 'deposit'],
         cluster_by=['block_timestamp'],
         unique_key='tx_id'
     )
