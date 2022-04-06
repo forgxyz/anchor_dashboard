@@ -1,7 +1,7 @@
-{{ 
+{{
     config(
         materialized='incremental',
-        tags=['core', 'anchor', 'earn', 'depsoit'],
+        tags=['core', 'anchor', 'earn', 'deposit'],
         cluster_by=['block_timestamp']
     )
 }}
@@ -10,9 +10,9 @@ with
 deposits as (
 
     select
-        
+
         *
-    
+
     from {{ source('terra_sv', 'msgs' )}}
 
     where {{ incremental_load_filter('block_timestamp') }}
