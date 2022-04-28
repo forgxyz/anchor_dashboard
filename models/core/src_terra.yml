@@ -19,3 +19,19 @@ sources:
         - name: swaps
         - name: daily_balances
         - name: oracle_prices
+    - name: anchor
+      database: flipside
+      schema: anchor
+      tables:
+        - name: bonds
+        - name: borrows
+        - name: burns
+        - name: collateral
+        - name: deposits
+        - name: gov_staking
+        - name: gov_submit_proposal
+        - name: gov_vote
+        - name: liquidations
+        - name: redeem
+        - name: repay
+        - name: reward_claims
