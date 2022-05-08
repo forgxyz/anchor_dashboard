@@ -5,3 +5,16 @@ logs/
 .notes
 dbt_docs.sh
 *.DS_Store
+
+# newer versions of dbt use this directory instead of dbt_modules for test dependencies
+dbt_packages/
+
+.venv/
+.python-version
+
+# Visual Studio Code files
+*/.vscode
+*.code-workspace
+.history/
+**/.DS_Store
+.vscode/
