@@ -37,4 +37,3 @@ models:
 
 vars:
   "dbt_date:time_zone": GMT
-  
